@@ -1,0 +1,34 @@
+<nav class="navbar bg-dark border-bottom border-body navbar-expand-lg" data-bs-theme="dark">
+            <div class="container">
+                <a asp-controller="Admin" asp-action="Index" class="navbar-brand">Admin</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a asp-controller="Doctor" asp-action="Index" class="nav-link">Doctors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="User" asp-action="Index" class="nav-link">Users</a>
+                        </li>
+                        <li class="nav-item"></li>
+                            <a asp-controller="Role" asp-action="Index" class="nav-link">Roles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Department" asp-action="Index" class="nav-link">Departments</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item"></li>
+                            <a href="#" class="nav-link">@User.Identity?.Name</a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="Account" asp-action="Logout" class="nav-link">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>

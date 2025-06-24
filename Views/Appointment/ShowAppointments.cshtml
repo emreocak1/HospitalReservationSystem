@@ -1,0 +1,39 @@
+@model List<itec420.Models.Appointment>
+@{
+    Layout = "_Layout";
+}
+
+<h2>My Patient Appointments</h2>
+
+@if (!Model.Any())
+{
+    <p class="text-muted">No appointments found.</p>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead class="table-light">
+            <tr>
+                <th>Patient Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>@appointment.AppUser.Fullname</td>
+                <td>@appointment.AppointmentDate.ToShortDateString()</td>
+                <td>@appointment.Time</td>
+                <td>
+                    <a asp-controller="Appointment" asp-action="DeleteAppointment" asp-route-id="@appointment.AppointmentId" class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

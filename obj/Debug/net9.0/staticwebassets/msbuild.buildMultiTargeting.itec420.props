@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\itec420.props" />
+</Project>

@@ -1,0 +1,84 @@
+@model List<itec420.Models.Appointment>
+@{
+    Layout = "_Layout";
+}
+<section class="mt-3">
+    <div class="container">
+        @if (User.Identity?.IsAuthenticated == true && User.IsInRole("Patient"))
+        {
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <strong>Appointments</strong>
+                        </div>
+                        <div class="list-group list-group-flush p-3">
+                            <a asp-controller="Appointment" asp-action="CreateAppointment" class="btn btn-success mb-2 w-100">
+                                <i class="fa-solid fa-plus me-1"></i> Create Appointment
+                            </a>
+
+                            @foreach (var appointment in Model)
+                            {
+                                <a asp-controller="Appointment"
+                                   asp-action="EditAppointment"
+                                   asp-route-id="@appointment.AppointmentId"
+                                   class="btn btn-outline-primary mb-2 w-100 text-start">
+                                    <i class="fa-solid fa-calendar-pen me-1"></i>
+                                    Reschedule with Dr. @appointment.Doctor.DoctorName
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-secondary text-white">
+                            <strong>My Appointment List</strong>
+                        </div>
+                        <div class="card-body p-3">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover align-middle text-center">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Doctor Name</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var appointment in Model)
+                                        {
+                                            <tr>
+                                                <td>@appointment.Doctor.DoctorName</td>
+                                                <td>@appointment.AppointmentDate.ToString("dd MMM yyyy")</td>
+                                                <td>@appointment.Time</td>
+                                                <td>
+                                                    <a asp-controller="Appointment" asp-action="DeleteAppointment" asp-route-id="@appointment.AppointmentId" class="btn btn-danger btn-sm">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (User.Identity?.IsAuthenticated == true && User.IsInRole("Doctor"))
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <a asp-controller="Appointment" asp-action="ShowAppointments" class="btn btn-info w-100 text-white mt-3">
+                        <i class="fa-solid fa-calendar-check me-1"></i>
+                        Show Patients' Appointments
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</section>

@@ -1,0 +1,45 @@
+@model DoctorEditModel
+@{
+    Layout = "_AdminLayout";
+}
+<div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header py-1 d-flex justify-content-between align-items-center">
+                        <h5 class="card-title">Edit Doctor</h5>
+                        <a asp-controller="Doctor" asp-action="Index" class="btn btn-sm btn-primary">
+                            <i class="fa-solid fa-list"></i>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <form asp-action="EditDoctor" asp-controller="Doctor" asp-route-id="@Model.Id" method="post">
+                            <input type="hidden" asp-for="Id">
+                            <div class="row mb-3">
+                                <label asp-for="DoctorName" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <input asp-for="DoctorName" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label asp-for="DoctorDepartment" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <input asp-for="DoctorDepartment" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label asp-for="PicOfDoc" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <input asp-for="PicOfDoc" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-sm-10 offset-sm-2">
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>

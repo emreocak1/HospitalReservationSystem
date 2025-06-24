@@ -1,0 +1,32 @@
+@model itec420.Models.Appointment
+@{
+    Layout = "_Layout";
+}
+
+<h2>Create Appointment</h2>
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-controller="Appointment" asp-action="CreateAppointment" method="post">
+    <div class="form-group">
+        <label asp-for="DoctorId">Select Doctor</label>
+        <select asp-for="DoctorId" class="form-control" asp-items="@(new SelectList(ViewBag.Doctors, "Id", "DoctorName"))">
+            <option value="">-- Select --</option>
+        </select>
+        <span asp-validation-for="DoctorId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AppointmentDate"></label>
+        <input asp-for="AppointmentDate" class="form-control" type="date" />
+        <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Time"></label>
+        <input asp-for="Time" class="form-control" type="time" />
+        <span asp-validation-for="Time" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Book</button>
+</form>
+

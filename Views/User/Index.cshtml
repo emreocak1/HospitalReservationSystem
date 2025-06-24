@@ -1,0 +1,67 @@
+@using Microsoft.AspNetCore.Identity
+@model IEnumerable<AppUser>
+@{
+    Layout = "_AdminLayout";
+}
+<div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header py-1 d-flex justify-content-between align-items-center">
+                        <h5 class="card-title">Users</h5>
+                        <a asp-controller="User" asp-action="CreateUser" class="btn btn-sm btn-primary">
+                            <i class="fa-solid fa-plus"></i>
+                        </a>
+                    </div>
+                    <div class="card-body">
+
+                        <form method="get">
+                            <div class="input-group mb-2">
+                                <select name="role" class="form-select" asp-items="ViewBag.Roles">
+                                    <option value="" selected>All</option>
+                                </select>
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </div>
+                        </form>
+
+                        @if(Model.Count() == 0){
+                            <p class="text-danger">There is no users in this role</p>
+                        }
+                        else{
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped mb-0">
+                                <thead class="table-secondary">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Fullname</th>
+                                        <th>Email</th>
+                                        <th style="width: 90px;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach(var usrs in Model){
+                                        <tr>
+                                        <td>@usrs.Id</td>
+                                        <td>@usrs.Fullname</td>
+                                        <td>@usrs.Email</td>
+                                        <td>
+                                            <a asp-controller="User" asp-action="EditUser" asp-route-id="@usrs.Id" class="btn btn-primary btn-sm">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </a>
+                                            <a asp-controller="User" asp-action="DeleteUser" asp-route-id="@usrs.Id" class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>   
+                                    }      
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,55 @@
+@model AdminDashboardViewModel
+
+<div class="row">
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col">
+                        <div class="fw-bold text-primary text-uppercase mb-1">Doctors</div>
+                        <div class="h5 mb-0 fw-bold">@Model.DoctorCount</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col">
+                        <div class="fw-bold text-primary text-uppercase mb-1">Users</div>
+                        <div class="h5 mb-0 fw-bold">@Model.UserCount</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col">
+                        <div class="fw-bold text-primary text-uppercase mb-1">Departments</div>
+                        <div class="h5 mb-0 fw-bold">@Model.DepartmentCount</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col">
+                        <div class="fw-bold text-primary text-uppercase mb-1">Appointments</div>
+                        <div class="h5 mb-0 fw-bold">@Model.AppointmentCount</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
